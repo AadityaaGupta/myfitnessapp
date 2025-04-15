@@ -76,6 +76,7 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
   Widget build(BuildContext context) {
     getInfo();
     return Scaffold(
+
         backgroundColor: Colors.blue,
         body: globals.gender == "male"
             ? Container(
@@ -120,18 +121,20 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
                             image: AppAssets.appLogo),
                       ),
 
-
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Womensworkout()));
-                        },
-                        child: textOnImageWidget(
-                            height: 180,
-                            width: 450,
-                            text: "Womens Workout",
-                            image: AppAssets.appLogo),
-                      ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //         builder: (context) => Womensworkout(
+                      //               exerciseName: exerciseName2,
+                      //               appBarTitle: "Push Workout",
+                      //             )));
+                      //   },
+                      //   child: textOnImageWidget(
+                      //       height: 180,
+                      //       width: 450,
+                      //       text: "Womens Workout",
+                      //       image: AppAssets.appLogo),
+                      // ),
                       // textOnImageWidget(
                       //     height: 180,
                       //     width: 450,

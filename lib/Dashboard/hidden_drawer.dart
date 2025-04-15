@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:myfitnessapp/Dashboard/HomeScreen.dart';
 import 'package:myfitnessapp/Workout_Plan/Workout_for_saturday.dart';
+import 'package:myfitnessapp/Workout_Plan/womensWorkout.dart';
 import 'package:myfitnessapp/Workout_Plan/workout_for_friday.dart';
 import 'package:myfitnessapp/Workout_Plan/workout_for_thursday.dart';
 import 'package:myfitnessapp/Workout_Plan/workout_for_tuesday.dart';
 import 'package:myfitnessapp/Workout_Plan/workout_for_monday.dart';
 import 'package:myfitnessapp/Workout_Plan/workout_for_wednesday.dart';
 import 'package:myfitnessapp/welcom_screen.dart';
-
+import '../../../globels.dart' as globals;
 import '../Workout_Plan/workout_screen.dart';
 
 class HiddenDrawer extends StatefulWidget {
@@ -19,6 +20,43 @@ class HiddenDrawer extends StatefulWidget {
 }
 
 class _HiddenDrawerState extends State<HiddenDrawer> {
+    List<String> wMonday = [
+    "Chest",
+    "Shoulders",
+    "Triceps",
+    "Abs",
+  ];
+   List<String> wTuesday = ["Back", "Rear Delts", "Traps", "Biceps", "Abs"];
+  List<String> wWednesday = [
+    "Quads",
+    "Hamstrings",
+    "Calves",
+    "Abs",
+  ];
+   List<String> wThursday = [
+    "Back",
+    "Chest",
+    "Shoulders",
+    "Byceps",
+    "Triceps",
+  ];
+   List<String> wFriday = [
+    "Hamstring",
+    "Quads",
+    "Calves",
+    "Abs",
+  ];
+   List<String> wSaturday = [
+    "Forward Lunge",
+    "Bodyweight Squat",
+    "Mountain Climber",
+    "Running",
+    "Burpees",
+    "High Kick",
+    "Hand Chest Press and Row",
+    "Sit-Ups",
+    "Bicycle"
+  ];
   List<ScreenHiddenDrawer> _pages = [];
 
   @override
@@ -46,7 +84,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForMonday()),
+        globals.gender=="male"?  WorkoutForMonday():Womensworkout(appBarTitle: "Push Workout",exerciseName:wMonday ,)),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
               name: "Tuesday Workout plan",
@@ -55,7 +93,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForTuesday()),
+           globals.gender=="male"?  WorkoutForTuesday():Womensworkout(appBarTitle: "Pull Workout",exerciseName:wTuesday ,)),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
               name: "Wednesday Workout plan",
@@ -64,7 +102,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForWednesday()),
+           globals.gender=="male"?  WorkoutForWednesday():Womensworkout(appBarTitle: "Legs Workout",exerciseName:wWednesday ,)),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
               name: "Thursday Workout plan",
@@ -73,7 +111,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForThursday()),
+           globals.gender=="male"?  WorkoutForThursday():Womensworkout(appBarTitle: "Upper Body Workout",exerciseName:wThursday ,)),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
               name: "Friday Workout plan",
@@ -82,7 +120,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForFriday()),
+          globals.gender=="male"?  WorkoutForFriday():Womensworkout(appBarTitle: "Lower Body Workout",exerciseName: wFriday,)),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
               name: "Saturday Workout plan",
@@ -91,7 +129,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
               selectedStyle: TextStyle()),
-          WorkoutForSaturday()),
+           globals.gender=="male"?  WorkoutForSaturday():Womensworkout(appBarTitle: "Cardio",exerciseName:wSaturday ,)),
     ];
   }
 
