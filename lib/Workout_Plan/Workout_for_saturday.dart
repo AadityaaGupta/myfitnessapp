@@ -48,7 +48,7 @@ class _WorkoutForSaturdayState extends State<WorkoutForSaturday> {
     "Bicycle"
   ];
 
-  List<String> img2=[
+  List<String> img2 = [
     AppAssets.forwardLunge,
     AppAssets.bodyWeightSquat,
     AppAssets.mountainClimber,
@@ -58,12 +58,11 @@ class _WorkoutForSaturdayState extends State<WorkoutForSaturday> {
     AppAssets.handChestPress,
     AppAssets.sitUps,
     AppAssets.bicycle
-    ];
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.greenAccent,
         body: globals.gender == "male"
             ? Container(
                 height: MediaQuery.of(context).size.height,
@@ -83,7 +82,7 @@ class _WorkoutForSaturdayState extends State<WorkoutForSaturday> {
                             height: 180,
                             width: 450,
                             text: "Single Muscle",
-                            image: AppAssets.appLogo),
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
                       ),
                       SizedBox(
                         height: 10,
@@ -103,8 +102,8 @@ class _WorkoutForSaturdayState extends State<WorkoutForSaturday> {
                             height: 180,
                             width: 450,
                             text: "Extream Workout",
-                            image: AppAssets.appLogo),
-                      ), 
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
+                      ),
                     ],
                   ),
                 ))
@@ -128,13 +127,13 @@ class _WorkoutForSaturdayState extends State<WorkoutForSaturday> {
               ),
               borderRadius: BorderRadius.circular(20),
               image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+                  DecorationImage(image:image.contains("https")?NetworkImage(image): AssetImage(image), fit: BoxFit.cover)),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16,
+                  color: Colors.white,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
           ),

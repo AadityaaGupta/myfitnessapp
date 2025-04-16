@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:myfitnessapp/Models/user_data.dart';
 import 'package:myfitnessapp/Utils/session.dart';
 import 'package:myfitnessapp/Workout_Plan/ExerciseView.dart';
-import 'package:myfitnessapp/Workout_Plan/womensWorkout.dart' show Womensworkout;
+// import 'package:myfitnessapp/Workout_Plan/womensWorkout.dart'
+//     show Womensworkout;
 import 'package:myfitnessapp/app_assets.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -76,8 +77,6 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
   Widget build(BuildContext context) {
     getInfo();
     return Scaffold(
-
-        backgroundColor: Colors.blue,
         body: globals.gender == "male"
             ? Container(
                 height: MediaQuery.of(context).size.height,
@@ -97,7 +96,7 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
                             height: 180,
                             width: 450,
                             text: "Single Muscle",
-                            image: AppAssets.appLogo),
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
                       ),
                       SizedBox(
                         height: 10,
@@ -118,33 +117,9 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
                             height: 180,
                             width: 450,
                             text: "Extreme Workout",
-                            image: AppAssets.appLogo),
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
                       ),
 
-                      // InkWell(
-                      //   onTap: () {
-                      //     Navigator.of(context).push(MaterialPageRoute(
-                      //         builder: (context) => Womensworkout(
-                      //               exerciseName: exerciseName2,
-                      //               appBarTitle: "Push Workout",
-                      //             )));
-                      //   },
-                      //   child: textOnImageWidget(
-                      //       height: 180,
-                      //       width: 450,
-                      //       text: "Womens Workout",
-                      //       image: AppAssets.appLogo),
-                      // ),
-                      // textOnImageWidget(
-                      //     height: 180,
-                      //     width: 450,
-                      //     text: "Home Workout",
-                      //     image: AppAssets.appLogo),
-                      // textOnImageWidget(
-                      //     height: 180,
-                      //     width: 450,
-                      //     text: "",
-                      //     image: AppAssets.appLogo),
                     ],
                   ),
                 ))
@@ -168,13 +143,13 @@ class _WorkoutForMondayState extends State<WorkoutForMonday> {
               ),
               borderRadius: BorderRadius.circular(20),
               image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+                  DecorationImage(image:image.contains("https")?NetworkImage(image): AssetImage(image), fit: BoxFit.cover)),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16,
+                  color: Colors.white,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
           ),

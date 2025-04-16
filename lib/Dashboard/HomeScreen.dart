@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:myfitnessapp/Dashboard/collection_view.dart';
 import 'package:myfitnessapp/Dashboard/dietPlan.dart';
 import 'package:myfitnessapp/Dashboard/slider.dart';
 import 'package:myfitnessapp/Models/simple_slider.dart';
+import 'package:myfitnessapp/Widgets/customButton.dart';
 import 'package:myfitnessapp/Widgets/image_view.dart';
 import 'package:myfitnessapp/app_assets.dart';
 
@@ -10,10 +12,10 @@ class Homescreen {
   SimpleImageSliderData? data;
 
   List<String> slidImage = [
-    AppAssets.slider0,
-    AppAssets.slider1,
+   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt7JyQyaC5y_3jnKq4_Xc7m9fRUFwxFx-SIZo2Y27GB0zLxvZd7qdMSW_lF-poNXhQA6A&usqp=CAU",
+    "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2018/11/Group-Fitness-Class-Performing-A-Variety-Of-Exercises-1.jpg?quality=86&strip=all",
     AppAssets.slider2,
-    AppAssets.img2
+   "https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/k/g/d/large-gym-exercise-workout-wall-poster-self-adhesive-poster-original-imah96rbwtnyvema.jpeg?q=90&crop=false"
   ];
 
   loadImage() {
@@ -36,15 +38,30 @@ class Homescreen {
               children: [
                 SliderImage(data!),
                 CollectionView("Recommended Products"),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    "Get Your Diet Plan",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 InkWell(
                     onTap: () {
                       showDialogueForDiedPlan(context);
                     },
-                    child: ClipRRect(
-                      child: ImageView(
-                        AppAssets.img2,
-                        // height: MediaQuery.of(context).size.height * 0.35,
-                        // width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding:  EdgeInsets.all(10.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: ImageView(
+                          fit: BoxFit.cover,
+                      
+                          AppAssets.dietPlanImg,
+                      
+                          // height: MediaQuery.of(context).size.height * 0.35,
+                          // width: MediaQuery.of(context).size.width,
+                        ),
                       ),
                     )),
                 SizedBox(
@@ -68,10 +85,14 @@ class Homescreen {
             return Dialog(
                 insetPadding:
                     EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                child: SingleChildScrollView(
+                child: 
+                LayoutBuilder(
+            builder: (context, constraints) {
+             return   SingleChildScrollView(
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       maxHeight: MediaQuery.of(context).size.height * 0.8,
+                      maxWidth: MediaQuery.of(context).size.width * 0.5,
                     ),
                     child: IntrinsicHeight(
                       child: Column(
@@ -90,7 +111,7 @@ class Homescreen {
                                   onTap: () {
                                     Navigator.of(context).pop(); // Close dialog
                                   },
-                                  child: Icon(Icons.cancel_outlined),
+                                  child: Icon(Icons.cancel),
                                 ),
                               ],
                             ),
@@ -101,6 +122,7 @@ class Homescreen {
                                   const EdgeInsets.symmetric(horizontal: 16),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text("Goal"),
                                   SizedBox(height: 6),
@@ -129,6 +151,7 @@ class Homescreen {
                                   Text("Meal Type"),
                                   SizedBox(height: 6),
                                   DropdownButtonFormField<String>(
+                                    
                                     value: selectedMealType,
                                     items: [
                                       'Vegetarian',
@@ -149,33 +172,32 @@ class Homescreen {
                                       border: OutlineInputBorder(),
                                     ),
                                   ),
-                                  Spacer(),
                                   SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
+                                    height: 20,
+                                  ),
+
+                                  CustomButton(
+                                    () async{
                                         // Call your method using selectedGoal and selectedMealType
                                         print("Goal: $selectedGoal");
                                         print("Meal Type: $selectedMealType");
-                                        
 
-                                    bool goBack=    (Navigator.of(context)
+                                        bool goBack = await (Navigator.of(context)
                                             .push(MaterialPageRoute(
                                                 builder: (context) => DietPlan(
                                                       goal: selectedGoal,
                                                       mealType:
                                                           selectedMealType,
-                                                    ))))as bool;
-                                          if(goBack){
+                                                    )))) as bool;
+                                        if (goBack) {
+                                          print("Under the if condition");
 
-                                              print("Under the if condition");
-
-                                        Navigator.of(context).pop();
-                                          }
+                                           Navigator.of(context).pop();
+                                        }
                                       },
-                                      child: Text("Get Diet Plan"),
-                                    ),
-                                  ),
+                                     "Get Diet Plan"),
+
+                                  
                                   SizedBox(height: 16),
                                 ],
                               ),
@@ -185,7 +207,13 @@ class Homescreen {
                       ),
                     ),
                   ),
-                ));
+                );
+                
+          },),
+                
+                );
+          
+          
           },
         );
       },

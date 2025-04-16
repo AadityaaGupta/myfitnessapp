@@ -14,6 +14,7 @@ class AppAssets {
   static const String Atom = "assets/images/Atom.jpg";
   static const String bag = "assets/images/bag.jpg";
   static const String img2 = "assets/images/images2.jpg";
+  static const String dietPlanImg = "assets/images/dietPlanImg.jpg";
 
   static const String slider0 = "assets/images/slider0.jpg";
   static const String slider1 = "assets/images/slider1.jpg";
@@ -40,15 +41,14 @@ class AppAssets {
   static const String vid18 = "assets/videos/vid18.mp4";
 
   //-----------------Chest----------------
- static const String dumbbellBenchPress =
+  static const String dumbbellBenchPress =
       "assets/images/dumbbellBenchPress.jpg";
   static const String inclineBenchPress = "assets/images/inclineBenchPress.jpg";
   static const String dumbbellPullover = "assets/images/dumbbellPullover.jpg";
   static const String dumbbellFly = "assets/images/dumbbellFly.jpg";
   static const String standingCable = "assets/images/standingCableFly.jpg";
   static const String machineFly = "assets/images/machineFly.jpg";
-   static const String barbellBenchPress =
-      "assets/images/barbellBenchPress.jpg";
+  static const String barbellBenchPress = "assets/images/barbellBenchPress.jpg";
 
   //------------------tricep----------------
 
@@ -117,14 +117,16 @@ class AppAssets {
   static const String legExtension = "assets/images/legExtension.jpg";
   static const String weightedSquats = "assets/images/weightedSquats.jpg";
   static const String legPress = "assets/images/legPress.jpg";
-  static const String bulgarianSplitSquats = "assets/images/bulgarianSplitSquats.jpg";
+  static const String bulgarianSplitSquats =
+      "assets/images/bulgarianSplitSquats.jpg";
   static const String lyingLeg = "assets/images/lyingLeg.jpg";
   static const String seatedCalf = "assets/images/seatedCalf.jpg";
   static const String nordicCurls = "assets/images/nordicCurls.jpg";
   static const String stiffLegDeadlift = "assets/images/stiffLegDeadlift.jpg";
   static const String frontSquats = "assets/images/frontSquats.jpg";
   static const String stepUps = "assets/images/stepUps.jpg";
-  static const String standingCalfRaises = "assets/images/standingCalfRaises.jpg";
+  static const String standingCalfRaises =
+      "assets/images/standingCalfRaises.jpg";
   static const String donkeyCalfRaises = "assets/images/donkeyCalfRaises.jpg";
   static const String cableWoodchoppers = "assets/images/cableWoodchoppers.jpg";
   static const String forwardLunge = "assets/images/forwardLunge.jpg";
@@ -136,9 +138,8 @@ class AppAssets {
   static const String handChestPress = "assets/images/handChestPress.jpg";
   static const String sitUps = "assets/images/sitUps.jpg";
   static const String bicycle = "assets/images/bicycle.jpg";
-  
-  static const String womensWorkout = "assets/images/womensWorkout.jpg";
 
+  static const String womensWorkout = "assets/images/womensWorkout.jpg";
 
   //Diet Plans
 

@@ -41,13 +41,13 @@ class _WorkoutForThursdayState extends State<WorkoutForThursday> {
 
   List<List<String>> subImg = [
     [
-      AppAssets.inclineBenchPress,
-      AppAssets.dumbbellBenchPress,
+      AppAssets.stiffLegDeadlift,
+      AppAssets.pullUps,
     ],
-    [AppAssets.dumbbellBenchPress, AppAssets.seatedCableRow],
-    [AppAssets.straightBar],
-    [AppAssets.barSkullcrusher],
-    [AppAssets.plank]
+    [AppAssets.inclineDumbbellCurlThumb, AppAssets.cableWoodchoppers],
+    [AppAssets.seatedArnoldPressThumb],
+    [AppAssets.seatedConcentrationCurl],
+    [AppAssets.barSkullcrusher]
   ];
 
   List<List<String>> subExercise = [
@@ -81,7 +81,7 @@ class _WorkoutForThursdayState extends State<WorkoutForThursday> {
                             height: 180,
                             width: 450,
                             text: "Single Muscle",
-                            image: AppAssets.appLogo),
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
                       ),
                       SizedBox(
                         height: 10,
@@ -103,18 +103,9 @@ class _WorkoutForThursdayState extends State<WorkoutForThursday> {
                             height: 180,
                             width: 450,
                             text: "Extreme Workout",
-                            image: AppAssets.appLogo),
+                            image: "https://i0.wp.com/www.muscleandfitness.com/wp-content/uploads/2015/08/main_frontsquat.jpg?w=1188&h=630&crop=1&quality=86&strip=all"),
                       ),
-                      // textOnImageWidget(
-                      //     height: 180,
-                      //     width: 450,
-                      //     text: "Push & Pull Workout",
-                      //     image: AppAssets.appLogo),
-                      // textOnImageWidget(
-                      //     height: 180,
-                      //     width: 450,
-                      //     text: "",
-                      //     image: AppAssets.appLogo),
+                     
                     ],
                   ),
                 ))
@@ -138,13 +129,13 @@ class _WorkoutForThursdayState extends State<WorkoutForThursday> {
               ),
               borderRadius: BorderRadius.circular(20),
               image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.cover)),
+                  DecorationImage(image:image.contains("https")?NetworkImage(image): AssetImage(image), fit: BoxFit.cover)),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
-                  color: Colors.yellow,
-                  fontSize: 16,
+                  color: Colors.white,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold),
             ),
           ),

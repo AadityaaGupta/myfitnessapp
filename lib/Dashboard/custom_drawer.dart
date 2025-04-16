@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myfitnessapp/Models/user_data.dart';
 import 'package:myfitnessapp/Utils/session.dart';
+import 'package:myfitnessapp/Widgets/customButton.dart';
 import 'package:myfitnessapp/app_assets.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -340,6 +341,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     maxHeight: MediaQuery.of(context).size.height * 0.8,
+                    maxWidth: MediaQuery.of(context).size.width*0.5
                   ),
                   child: IntrinsicHeight(
                     child: Column(
@@ -348,18 +350,19 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 12),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('BMI Calculation',
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold)),
+                                      Spacer(),
                               InkWell(
                                 onTap: () {
                                   Navigator.of(context)
                                       .pop(); // Close the dialog
                                 },
-                                child: Icon(Icons.cancel_outlined),
+                                child: Icon(Icons.cancel),
                               ),
                             ],
                           ),
@@ -387,11 +390,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                   keyboardType: TextInputType.numberWithOptions(
                                       decimal: true),
                                 ),
-                                Spacer(),
                                 SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    onPressed: () {
+                                  height: 10,
+                                ),
+
+
+                                CustomButton(
+                                   () {
                                       bmi = (double.parse(weight.text)) /
                                           ((double.parse(height.text) *
                                                   0.3048) *
@@ -402,9 +407,25 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                       weight.text = "";
                                       Navigator.of(context).pop();
                                     },
-                                    child: Text("Get BMI"),
-                                  ),
-                                ),
+                                    "Get BMI"),
+
+                                // SizedBox(
+                                //   width: double.infinity,
+                                //   child: ElevatedButton(
+                                    // onPressed: () {
+                                    //   bmi = (double.parse(weight.text)) /
+                                    //       ((double.parse(height.text) *
+                                    //               0.3048) *
+                                    //           (double.parse(height.text) *
+                                    //               0.3048));
+                                    //   setState(() {}); // update BMI display
+                                    //   height.text = "";
+                                    //   weight.text = "";
+                                    //   Navigator.of(context).pop();
+                                    // },
+                                //     child: Text("Get BMI"),
+                                //   ),
+                                // ),
                                 SizedBox(height: 16),
                               ],
                             ),
