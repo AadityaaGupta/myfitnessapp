@@ -104,45 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   }
                 },"Login"
               ),
-              InkWell(
-                onTap: () async {
-                  // _signIn();
-                  Session data = Session();
-                  UserData? userD = await data.getUserData();
-                  if (userD != null) {
-                    globals.gender=userD.gender;
-                    if (_emailController.text == userD.email &&
-                        _passwordController.text == userD.pass) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DashboardScreen()));
-                    }
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Email & Password not matched'),
-                      ),
-                    );
-                  }
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child:
-                        Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              
               SizedBox(
                 height: 10,
               ),

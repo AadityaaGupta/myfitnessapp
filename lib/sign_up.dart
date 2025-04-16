@@ -472,42 +472,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },"Sign Up"
                       
                       ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          UserData user = UserData(
-                              name: name.text,
-                              email: email.text,
-                              age: int.parse(age.text),
-                              height: double.parse(height.text),
-                              weight: double.parse(weight.text),
-                              gender: gender.text,
-                              pass: pass.text);
-                          if (user != null) {
-                            Session setData = Session();
-                            setData.saveUserData(user);
-
-                            globals.gender=gender.text;
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Signup Successfully'),
-                              ),
-                            );
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => DashboardScreen()));
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Signup Failed'),
-                              ),
-                            );
-                          }
-
-                        },
-                        child: const Text('Sign up'),
-                      ),
-                    ),
                     const SizedBox(
                       height: 30.0,
                     ),
