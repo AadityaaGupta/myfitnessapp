@@ -130,6 +130,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:myfitnessapp/Dashboard/dashboard.dart';
 import 'package:myfitnessapp/Utils/session.dart';
 import 'package:myfitnessapp/Utils/theme.dart';
+import 'package:myfitnessapp/Widgets/customButton.dart';
 import 'package:myfitnessapp/Widgets/custom_scaffold.dart';
 import 'package:myfitnessapp/signin_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -438,37 +439,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(
                       height: 25.0,
                     ),
-                    // i agree to the processing
-                    // Row(
-                    //   children: [
-                    //     Checkbox(
-                    //       value: agreePersonalData,
-                    //       onChanged: (bool? value) {
-                    //         setState(() {
-                    //           agreePersonalData = value!;
-                    //         });
-                    //       },
-                    //       activeColor: lightColorScheme.primary,
-                    //     ),
-                    //     const Text(
-                    //       'I agree to the processing of ',
-                    //       style: TextStyle(
-                    //         color: Colors.black45,
-                    //       ),
-                    //     ),
-                    //     Text(
-                    //       'Personal data',
-                    //       style: TextStyle(
-                    //         fontWeight: FontWeight.bold,
-                    //         color: lightColorScheme.primary,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // const SizedBox(
-                    //   height: 25.0,
-                    // ),
-                    // signup button
+                    CustomButton(
+                       () async {
+                          UserData user = UserData(
+                              name: name.text,
+                              email: email.text,
+                              age: int.parse(age.text),
+                              height: double.parse(height.text),
+                              weight: double.parse(weight.text),
+                              gender: gender.text,
+                              pass: pass.text);
+                          if (user != null) {
+                            Session setData = Session();
+                            setData.saveUserData(user);
+
+                            globals.gender=gender.text;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Signup Successfully'),
+                              ),
+                            );
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => DashboardScreen()));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Signup Failed'),
+                              ),
+                            );
+                          }
+
+                        },"Sign Up"
+                      
+                      ),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -501,20 +504,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             );
                           }
 
-                          // if (_formSignupKey.currentState!.validate() &&
-                          //     agreePersonalData) {
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   const SnackBar(
-                          //     content: Text('Processing Data'),
-                          //   ),
-                          // );
-                          // } else if (!agreePersonalData) {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //     const SnackBar(
-                          //         content: Text(
-                          //             'Please agree to the processing of personal data')),
-                          //   );
-                          // }
                         },
                         child: const Text('Sign up'),
                       ),
