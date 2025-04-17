@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart' show Html;
 import 'package:myfitnessapp/app_assets.dart';
 
 class DietPlan extends StatefulWidget {
@@ -33,8 +34,8 @@ class _DietPlanState extends State<DietPlan> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(10),
-          child: Text(
+          child: Html(
+            data:
             widget.goal == "weightGain" && widget.mealType == "Vegetarian"
                 ? AppAssets.weightGainVeg
                 : widget.goal == "weightLoss" && widget.mealType == "Vegetarian"
@@ -61,9 +62,9 @@ class _DietPlanState extends State<DietPlan> {
                                                     widget.mealType == "Vegan"
                                                 ? AppAssets.muscleGainVegan
                                                 : AppAssets.weightGainVeg,
-            style: TextStyle(
-              fontSize: 15,
-            ),
+            // style: TextStyle(
+            //   fontSize: 15,
+            // ),
           ),
         ),
       ),

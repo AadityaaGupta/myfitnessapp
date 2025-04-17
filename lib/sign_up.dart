@@ -157,6 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController gender = TextEditingController();
 
   bool agreePersonalData = true;
+    String selectedGender="select gender";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -337,6 +338,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       children: [
                         Expanded(
                           child: TextFormField(
+                            keyboardType: TextInputType.number,
                             controller: weight,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -369,34 +371,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           width: 10.0,
                         ),
                         Expanded(
-                          child: TextFormField(
-                            controller: gender,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter Gender';
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              label: const Text('Gender'),
-                              hintText: 'Enter Gender',
-                              hintStyle: const TextStyle(
-                                color: Colors.black26,
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black12, // Default border color
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Colors.black12, // Default border color
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
+                          child:DropdownButtonFormField<String>(
+                                    
+                                    value: selectedGender,
+                                    items: [
+                                      "select gender",
+                                      'male',
+                                      'female',
+                                    ]
+                                        .map((meal) => DropdownMenuItem(
+                                              value: meal,
+                                              child: Text(meal),
+                                            ))
+                                        .toList(),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        selectedGender = value!;
+                                      });
+                                    },
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
                         ),
                       ],
                     ),
@@ -441,19 +437,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     CustomButton(
                        () async {
+
+                        if(selectedGender == "select gender" ){
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please select your Gender")));
+                        }else if(int.parse(age.text) < 12 ){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Age Should be grater than 12")));
+                        }
+                       else {
+                        
                           UserData user = UserData(
                               name: name.text,
                               email: email.text,
                               age: int.parse(age.text),
                               height: double.parse(height.text),
                               weight: double.parse(weight.text),
-                              gender: gender.text,
+                              gender: selectedGender,
                               pass: pass.text);
                           if (user != null) {
                             Session setData = Session();
                             setData.saveUserData(user);
 
-                            globals.gender=gender.text;
+                            globals.gender=selectedGender;
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text('Signup Successfully'),
@@ -467,7 +471,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 content: Text('Signup Failed'),
                               ),
                             );
-                          }
+                          }}
 
                         },"Sign Up"
                       

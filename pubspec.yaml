@@ -59,6 +59,7 @@ dependencies:
   go_router: ^13.2.0
   carousel_slider: ^5.0.0
   shared_preferences: ^2.5.3
+  flutter_html: ^3.0.0
 
 dev_dependencies:
   flutter_test:

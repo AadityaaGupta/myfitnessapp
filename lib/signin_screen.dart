@@ -37,10 +37,10 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text("Login"),
-      ),
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   title: Text("Login"),
+      // ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -117,15 +117,25 @@ class _SignInScreenState extends State<SignInScreen> {
                     width: 5,
                   ),
 
-                  CustomButton(
-                    () {
+                  InkWell(
+                    onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => SignUpScreen()));
-                    },"Sign Up"
+                              builder: (context) => SignUpScreen()));},
+                    child: Text("Sign Up",style: TextStyle(
+                      color: Colors.blue
+                    ),),
+                  )
+                  // CustomButton(
+                  //   () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => SignUpScreen()));
+                  //   },"Sign Up"
                     
-                    ),
+                  //   ),
 
                  
                 ],

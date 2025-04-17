@@ -11,6 +11,7 @@ class WorkoutScreen extends StatefulWidget {
 class _WorkoutScreenState extends State<WorkoutScreen> {
   @override
   Widget build(BuildContext context) {
+    print("==============>>>>>${globals.gender}");
     return Stack(children: [
       Container(
         width: MediaQuery.of(context).size.width,
